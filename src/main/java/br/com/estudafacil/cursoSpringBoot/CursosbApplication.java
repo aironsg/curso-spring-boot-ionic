@@ -44,6 +44,7 @@ public class CursosbApplication implements CommandLineRunner{
 		produto2.getCategorias().addAll(Arrays.asList(categoria1,categoria2));
 		produto3.getCategorias().addAll(Arrays.asList(categoria1));
 		
+		
 		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2));
 		produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3));
 		

@@ -1,6 +1,6 @@
 package br.com.estudafacil.cursoSpringBoot;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +13,20 @@ import br.com.estudafacil.cursoSpringBoot.domain.Cidade;
 import br.com.estudafacil.cursoSpringBoot.domain.Cliente;
 import br.com.estudafacil.cursoSpringBoot.domain.Endereco;
 import br.com.estudafacil.cursoSpringBoot.domain.Estado;
+import br.com.estudafacil.cursoSpringBoot.domain.Pagamento;
+import br.com.estudafacil.cursoSpringBoot.domain.PagamentoComBoleto;
+import br.com.estudafacil.cursoSpringBoot.domain.PagamentoComCartao;
+import br.com.estudafacil.cursoSpringBoot.domain.Pedido;
 import br.com.estudafacil.cursoSpringBoot.domain.Produto;
+import br.com.estudafacil.cursoSpringBoot.domain.enums.EstadoPagamento;
 import br.com.estudafacil.cursoSpringBoot.domain.enums.TipoCliente;
 import br.com.estudafacil.cursoSpringBoot.repositories.CategoriaRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.CidadeRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.ClienteRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.EnderecoRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.EstadoRepository;
+import br.com.estudafacil.cursoSpringBoot.repositories.PagamentoRepository;
+import br.com.estudafacil.cursoSpringBoot.repositories.PedidoRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -42,6 +49,12 @@ public class CursosbApplication implements CommandLineRunner{
 	
 	@Autowired
 	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursosbApplication.class, args);
@@ -89,12 +102,28 @@ public class CursosbApplication implements CommandLineRunner{
 		
 		cliente1.getEnderecos().addAll(Arrays.asList(endereco1, endereco2));
 		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Pedido pedido1 = new Pedido(simpleDateFormat.parse("20/12/2020"), cliente1, endereco1);
+		Pedido pedido2 = new Pedido(simpleDateFormat.parse("21/12/2021"), cliente1, endereco2);
+		
+		Pagamento pagamento1 = new PagamentoComCartao(EstadoPagamento.QUITADO, pedido1, 6);
+		pedido1.setPagamento(pagamento1);
+		
+		Pagamento pagamento2 = new PagamentoComBoleto(EstadoPagamento.PENDENTE, pedido2,
+				simpleDateFormat.parse("20/10/2021"), null);
+		pedido2.setPagamento(pagamento2);
+		
+		cliente1.getPedidos().addAll(Arrays.asList(pedido1, pedido2));
+		
 		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2));
 		produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3));
 		estadoRepository.saveAll(Arrays.asList(estado1,estado2,estado3));
 		cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3,cidade4));
 		clienteRepository.saveAll(Arrays.asList(cliente1));
 		enderecoRepository.saveAll(Arrays.asList(endereco1, endereco2));
+		pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2));
+		pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2));
 		
 		
 	}

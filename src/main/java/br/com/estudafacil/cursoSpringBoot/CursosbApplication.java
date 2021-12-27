@@ -13,6 +13,7 @@ import br.com.estudafacil.cursoSpringBoot.domain.Cidade;
 import br.com.estudafacil.cursoSpringBoot.domain.Cliente;
 import br.com.estudafacil.cursoSpringBoot.domain.Endereco;
 import br.com.estudafacil.cursoSpringBoot.domain.Estado;
+import br.com.estudafacil.cursoSpringBoot.domain.ItemPedido;
 import br.com.estudafacil.cursoSpringBoot.domain.Pagamento;
 import br.com.estudafacil.cursoSpringBoot.domain.PagamentoComBoleto;
 import br.com.estudafacil.cursoSpringBoot.domain.PagamentoComCartao;
@@ -25,6 +26,7 @@ import br.com.estudafacil.cursoSpringBoot.repositories.CidadeRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.ClienteRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.EnderecoRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.EstadoRepository;
+import br.com.estudafacil.cursoSpringBoot.repositories.ItemPedidoRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.PagamentoRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.PedidoRepository;
 import br.com.estudafacil.cursoSpringBoot.repositories.ProdutoRepository;
@@ -55,6 +57,9 @@ public class CursosbApplication implements CommandLineRunner{
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursosbApplication.class, args);
@@ -116,6 +121,18 @@ public class CursosbApplication implements CommandLineRunner{
 		
 		cliente1.getPedidos().addAll(Arrays.asList(pedido1, pedido2));
 		
+		
+		ItemPedido itemPedido1 = new ItemPedido(pedido1, produto1, 200.00, 2000.00, 1);
+		ItemPedido itemPedido2 = new ItemPedido(pedido1, produto3, 0.00, 80.00, 2);
+		ItemPedido itemPedido3 = new ItemPedido(pedido2, produto2, 100.00, 800.00, 1);
+		
+		pedido1.getItens().addAll(Arrays.asList(itemPedido1, itemPedido2));
+		pedido2.getItens().addAll(Arrays.asList(itemPedido3));
+		
+		produto1.getItens().addAll(Arrays.asList(itemPedido1));
+		produto2.getItens().addAll(Arrays.asList(itemPedido3));
+		produto3.getItens().addAll(Arrays.asList(itemPedido2));
+		
 		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2));
 		produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3));
 		estadoRepository.saveAll(Arrays.asList(estado1,estado2,estado3));
@@ -124,6 +141,8 @@ public class CursosbApplication implements CommandLineRunner{
 		enderecoRepository.saveAll(Arrays.asList(endereco1, endereco2));
 		pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2));
 		pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2));
+		itemPedidoRepository.saveAll(Arrays.asList(itemPedido1,itemPedido2,itemPedido3));
+		
 		
 		
 	}

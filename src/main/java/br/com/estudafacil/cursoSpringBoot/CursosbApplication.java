@@ -71,9 +71,9 @@ public class CursosbApplication implements CommandLineRunner{
 		Categoria categoria1 = new Categoria("Informática");
 		Categoria categoria2 = new Categoria("Escritório");
 		
-		Produto produto1 = new Produto("Notebook", 4500.00);
-		Produto produto2 = new Produto("Impressora", 1200.00);
-		Produto produto3 = new Produto("Mouse Gamer", 90.00);
+		Produto produto1 = new Produto("Notebook", 2000.00);
+		Produto produto2 = new Produto("Impressora", 800.00);
+		Produto produto3 = new Produto("Mouse Gamer", 80.00);
 		
 		
 		categoria1.getProdutos().addAll(Arrays.asList(produto1,produto2, produto3));

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.estudafacil.cursoSpringBoot.domain.ItemPedido;
 
 @Repository
-public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Integer>{
+public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Integer> {
 
 }

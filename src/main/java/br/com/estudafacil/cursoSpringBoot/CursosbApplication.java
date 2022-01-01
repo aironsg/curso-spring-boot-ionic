@@ -76,6 +76,7 @@ public class CursosbApplication implements CommandLineRunner{
 		Produto produto3 = new Produto("Mouse Gamer", 80.00);
 		
 		
+		
 		categoria1.getProdutos().addAll(Arrays.asList(produto1,produto2, produto3));
 		categoria2.getProdutos().addAll(Arrays.asList(produto2));
 		

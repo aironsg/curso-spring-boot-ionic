@@ -70,6 +70,15 @@ public class CursosbApplication implements CommandLineRunner{
 
 		Categoria categoria1 = new Categoria("Informática");
 		Categoria categoria2 = new Categoria("Escritório");
+		Categoria categoria3 = new Categoria("Lazer");
+		Categoria categoria4 = new Categoria("Hobbies");
+		Categoria categoria5 = new Categoria("Esportes");
+		Categoria categoria6 = new Categoria("Livros");
+		Categoria categoria7 = new Categoria("Carros");
+		Categoria categoria8 = new Categoria("Cama mesa e banho");
+		Categoria categoria9 = new Categoria("Vestuario");
+		Categoria categoria10 = new Categoria("Eletrônicos");
+		Categoria categoria11 = new Categoria("Gamers");
 		
 		Produto produto1 = new Produto("Notebook", 2000.00);
 		Produto produto2 = new Produto("Impressora", 800.00);
@@ -134,7 +143,8 @@ public class CursosbApplication implements CommandLineRunner{
 		produto2.getItens().addAll(Arrays.asList(itemPedido3));
 		produto3.getItens().addAll(Arrays.asList(itemPedido2));
 		
-		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2));
+		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2, categoria3, categoria4, categoria5,
+				categoria6, categoria7, categoria8, categoria9, categoria10, categoria11));
 		produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3));
 		estadoRepository.saveAll(Arrays.asList(estado1,estado2,estado3));
 		cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3,cidade4));

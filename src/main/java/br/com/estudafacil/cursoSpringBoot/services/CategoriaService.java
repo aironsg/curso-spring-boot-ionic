@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.com.estudafacil.cursoSpringBoot.domain.Categoria;
+import br.com.estudafacil.cursoSpringBoot.dto.CategoriaDTO;
 import br.com.estudafacil.cursoSpringBoot.repositories.CategoriaRepository;
 import br.com.estudafacil.cursoSpringBoot.services.exception.DataIntegrityException;
 import br.com.estudafacil.cursoSpringBoot.services.exception.ObjectNotFoundException;
@@ -53,6 +54,11 @@ public class CategoriaService {
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String direction, String orderBy){
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	
+	//validação customizada
+	public Categoria fromDTO(CategoriaDTO objDTO) {
+		return new Categoria(objDTO.getId(), objDTO.getNome());
 	}
 
 

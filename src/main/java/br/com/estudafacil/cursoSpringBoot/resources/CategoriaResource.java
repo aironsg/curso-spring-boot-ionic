@@ -60,12 +60,6 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 	}
 
-	// buscando todas as categorias e seus produtos
-//	@RequestMapping(method = RequestMethod.GET)
-//	public ResponseEntity<List<Categoria>> findAll(){
-//		List<Categoria> obj = service.findAll();
-//		return ResponseEntity.ok().body(obj);
-//	}
 
 	// mapeando apenas as categorias sem seus produtos com DTO
 	@RequestMapping(method = RequestMethod.GET)
@@ -87,6 +81,5 @@ public class CategoriaResource {
 		
 	}
 	
-	//validação @Valid
 
 }

@@ -37,13 +37,13 @@ public class Endereco implements Serializable{
 
 	}
 
-	public Endereco(String logradouro, String numero, String complemento, String bairro, String cep, Cidade cidade,
+	public Endereco(String logradouro, String numero,String bairro, String complemento,  String cep, Cidade cidade,
 			Cliente cliente) {
 		super();
 		this.logradouro = logradouro;
 		this.numero = numero;
-		this.complemento = complemento;
 		this.bairro = bairro;
+		this.complemento = complemento;
 		this.cep = cep;
 		this.cidade = cidade;
 		this.cliente = cliente;

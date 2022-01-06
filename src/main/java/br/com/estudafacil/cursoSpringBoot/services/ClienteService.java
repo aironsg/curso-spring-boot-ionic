@@ -34,7 +34,7 @@ public class ClienteService {
 	public Cliente find(Integer id) { // GET
 		Optional<Cliente> objCliente = repo.findById(id);
 		return objCliente.orElseThrow(() -> new ObjectNotFoundException(
-				"O objeto não foi encontrado" + id + ", Tipo : " + Cliente.class.getName()));
+				"O cliente não foi encontrado" + id + ", Tipo : " + Cliente.class.getName()));
 
 	}
 

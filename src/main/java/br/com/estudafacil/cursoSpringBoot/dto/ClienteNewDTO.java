@@ -2,24 +2,51 @@ package br.com.estudafacil.cursoSpringBoot.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import br.com.estudafacil.cursoSpringBoot.services.validation.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDTO  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	/*dados cliente*/
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
+	@Length(min = 5, max = 120, message = "Tamanho Minino de 5 e máximo de 120 caracteres")
 	private String nome;
+	
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
+	@Email(message = "Email obrigatório")
 	private String email;
+	
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
 	private String cpfOrCnpj;
+	
 	private Integer tipo;
 	
 	/*dados endereço*/
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
 	private String logradouro;
+	
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
 	private String numero;
+	
 	private String complemento;
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
+	
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
 	private String bairro;
+	
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
 	private String cep;
 	
+	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
 	private String telefone1; //inserção obrigatoria
+	
 	private String telefone2;
 	private String telefone3;
 	

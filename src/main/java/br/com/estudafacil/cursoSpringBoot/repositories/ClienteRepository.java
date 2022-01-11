@@ -9,5 +9,6 @@ import br.com.estudafacil.cursoSpringBoot.domain.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	
 	Cliente findByEmail(String email);
+	
 
 }

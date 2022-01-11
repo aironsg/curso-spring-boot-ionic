@@ -19,6 +19,11 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 
 	@Autowired
 	ClienteRepository repo;
+	
+	@Override
+	public void initialize(ClienteInsert ann) {
+		
+	}
 
 	@Override
 	public boolean isValid(ClienteNewDTO objDTO, ConstraintValidatorContext context) {

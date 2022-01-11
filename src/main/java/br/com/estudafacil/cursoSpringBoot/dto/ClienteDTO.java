@@ -8,15 +8,19 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import br.com.estudafacil.cursoSpringBoot.domain.Cliente;
+import br.com.estudafacil.cursoSpringBoot.services.validation.ClienteUpdate;
 
+@ClienteUpdate
 public class ClienteDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
+	
 	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
 	@Length(min = 5, max = 120, message = "Tamanho Minino de 5 e máximo de 120 caracteres")
 	private String nome;
+	
 	@NotEmpty(message = "Campo de Preenchimento Obrigatório")
 	@Email
 	private String email;

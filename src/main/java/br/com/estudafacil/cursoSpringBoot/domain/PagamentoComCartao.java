@@ -2,10 +2,13 @@ package br.com.estudafacil.cursoSpringBoot.domain;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import br.com.estudafacil.cursoSpringBoot.domain.enums.EstadoPagamento;
 
 
 @Entity
+@JsonTypeName("pagamentoComCartao")
 public class PagamentoComCartao extends Pagamento{
 	private static final long serialVersionUID = 1L;
 	

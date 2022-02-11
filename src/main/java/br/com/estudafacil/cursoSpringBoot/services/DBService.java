@@ -61,7 +61,7 @@ public class DBService {
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
 	
-	public void instantiateTestDataBase() throws ParseException {
+	public void instantiateTestDatabase() throws ParseException {
 		
 
 		Categoria categoria1 = new Categoria("Informática");
@@ -118,7 +118,7 @@ public class DBService {
 		estado2.getCidades().addAll(Arrays.asList(cidade2, cidade3));
 		estado3.getCidades().addAll(Arrays.asList(cidade4));
 
-		Cliente cliente1 = new Cliente("Airon silva", "airon@teste.com", "000.222.444-55", TipoCliente.PESSOAFISICA);
+		Cliente cliente1 = new Cliente("Airon silva", "arautodoadvento1@gmail.com", "000.222.444-55", TipoCliente.PESSOAFISICA);
 		cliente1.getTelefone().addAll(Arrays.asList("9999-8888", "5555-7777"));
 
 		Endereco endereco1 = new Endereco("Rua lapaz", "338", "aptB", "João Mota", "55010-080", cidade4, cliente1);
